@@ -54,6 +54,7 @@
             <button class="btn btn-dark" onclick="makeNewDiv()">Add value</button>
             <button class="btn btn-primary" onclick="get()">Get</button>
             <button class="btn btn-info" onclick="delay()">Delay</button>
+			<button onclick="promote()" class="btn btn-secondary">Promote</button>
             
         
         
@@ -86,5 +87,24 @@
 		container.appendChild(removedId);
         }		
 	}	
+
+	function promote() {
+        const queueItems = document.getElementsByClassName("delayQ");
+        const length = queueItems.length;
+        const random = Math.floor(Math.random() * length);
+        console.log(random);
+
+        const element = document.createElement("div");
+        element.innerHTML = queueItems[random].textContent;
+        element.style.color = "orange";
+        element.classList.add("delayQ");
+
+        const container = document.getElementById("target");
+        queueItems[random].remove();
+        container.insertBefore(element, queueItems[0]);
+    }
+
+
+
 </script>
 </html>	
